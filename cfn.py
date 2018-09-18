@@ -1,8 +1,16 @@
 #!/usr/local/bin/python3
 import boto3
 import json
+import argparse
+import logging
 
-
+#Parameters to pass into this script
+parser = argparse.ArgumentParser(description="Inputs needed to run the Release Notes Generator")
+parser.add_argument('--template', '-tp', action='store', dest='templatepath' ,help='File path to CloudFormation JSON temple')
+parser.add_argument('--name', '-n', action='store', dest='name' ,help='Stack name')
+parser.add_argument('--params', '-p', action='store', dest='params' ,help='Parameters')
+parser.add_argument('--tags', '-t', action='store', dest='tags' ,help='Tags')
+args = parser.parse_args()
 
 def make_cloudformation_client(config=None):
 	"""
@@ -22,7 +30,7 @@ def make_cloudformation_client(config=None):
 		# we dont have a configuration, lets use the
 		# standard configuration fallback
 		logging.info("using default config.")
-		client = boto3.client('cloudformation')
+		client = boto3.client('cloudformation', "us-west-1")
 
 	if not client:
 		raise ValueError('Not able to initialize boto3 client with configuration.')
@@ -31,16 +39,23 @@ def make_cloudformation_client(config=None):
 		return client
 
 #setup the model
-template_object = get_json(args.templateurl)
-params = make_kv_from_args(args.params, "Parameter", False)
-tags = make_kv_from_args(args.tags)
-response = client.create_stack(
+template_object = json.load(args.templatepath)
+#params = make_kv_from_args(args.params, "Parameter", False)
+#tags = make_kv_from_args(args.tags)
+new_client = make_cloudformation_client()
+response = new_client.create_stack(
     StackName=args.name,
     TemplateBody=json.dumps(template_object),
-    Parameters=params,
+    Parameters=[
+        {
+            'ParameterKey': 'string',
+            'ParameterValue': 'string',
+            'UsePreviousValue': True|False,
+            'ResolvedValue': 'string'
+        },
+    ],
     DisableRollback=False,
     TimeoutInMinutes=2,
     NotificationARNs=[args.topicarn],
-    Tags=tags
 )
 
