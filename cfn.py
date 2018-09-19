@@ -51,3 +51,5 @@ response = new_client.create_stack(
     TimeoutInMinutes=2,
 )
 
+print("Stack creation process finished.")
+
