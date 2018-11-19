@@ -47,6 +47,11 @@ def create_app(test_config=None):
         pass
 
     # a simple page that says hello
+    """
+    @app.route() creates a simple route so you can see the application working 
+    It creates a connection between the URL /hello and a function that returns a response, the string 'Hello, World!' 
+    in this case.
+    """
     @app.route('/hello')
     def hello():
         return 'Hello, World!'
