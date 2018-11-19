@@ -7,7 +7,7 @@ from flask import Flask
 
 def create_app(test_config=None):
     """
-    create and configure the app, creates the Flask instance
+    Create and configure the app, creates the Flask instance
 
     instance_relative_config=True tells the app that configuration files are relative to the instance folder.
     The instance folder is located outside the flaskr package and can hold local data that shouldn’t be committed to
@@ -30,7 +30,7 @@ def create_app(test_config=None):
     )
 
     """
-    overrides the default configuration with values taken from the config.py file in the instance folder if it exists. 
+    Overrides the default configuration with values taken from the config.py file in the instance folder if it exists. 
     For example, when deploying, this can be used to set a real SECRET_KEY.
     """
     if test_config is None:
