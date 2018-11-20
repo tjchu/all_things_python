@@ -52,4 +52,3 @@ def create_app(test_config=None):
         return render_template('about.html', title='About')
 
     return app
- 
