@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 
 
 def create_app(test_config=None):
@@ -13,7 +13,7 @@ def create_app(test_config=None):
 
         },
         {
-            'author': 'Mao Zhe Dong',
+            'author': 'Sarah Chu',
             'title': 'Blog Post 2',
             'content': 'Second post content',
             'date_posted': 'April 21, 2018',
@@ -49,7 +49,7 @@ def create_app(test_config=None):
 
     @app.route('/about')
     def about():
-        return render_template('about.html')
+        return render_template('about.html', title='About')
 
     return app
  
