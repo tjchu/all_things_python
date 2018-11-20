@@ -1,1 +1,1 @@
-Flask side-project
+Python side-project utilizing Flask web-app framework.
