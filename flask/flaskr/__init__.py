@@ -1,9 +1,26 @@
 import os
 
-from flask import Flask
+from flask import Flask, render_template
 
 
 def create_app(test_config=None):
+    posts = [
+        {
+            'author': 'Terry Chu',
+            'title': 'Blog Post 1',
+            'content': 'First post content',
+            'date_posted': 'April 20, 2018',
+
+        },
+        {
+            'author': 'Mao Zhe Dong',
+            'title': 'Blog Post 2',
+            'content': 'Second post content',
+            'date_posted': 'April 21, 2018',
+
+        }
+    ]
+
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
@@ -26,8 +43,13 @@ def create_app(test_config=None):
 
     # a simple page that says hello
     @app.route('/')
-    @app.route('/hello')
-    def hello():
-        return '<h1>Hello, World!</h1>'
+    @app.route('/home')
+    def home():
+        return render_template('home.html', posts=posts)
+
+    @app.route('/about')
+    def about():
+        return render_template('about.html')
 
     return app
+ 
