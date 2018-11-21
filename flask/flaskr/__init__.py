@@ -1,10 +1,10 @@
 import os
-
 from flask import Flask, render_template, url_for
+from forms import RegistrationForm, LoginForm
 
 
 def create_app(test_config=None):
-    app.config['SECRET_KEY'] = ''
+    # app.config['SECRET_KEY'] = ''
 
 
     posts = [
@@ -53,5 +53,15 @@ def create_app(test_config=None):
     @app.route('/about')
     def about():
         return render_template('about.html', title='About')
+
+    @app.route('/register')
+    def register():
+        from = RegistrationForm()
+        return render_template('register.html', title='Register', form=form)
+
+    @app.route('/login')
+    def login():
+        from = LoginForm()
+        return render_template('login.html', title='Login', form=form)
 
     return app
