@@ -1,11 +1,17 @@
 from flask_wtf import Flaskform
-from wtforms import StringField, PasswordField
-from wtforms.validators import DataRequired, Length, Email
+from wtforms import StringField, PasswordField, SubmitField
+from wtforms.validators import DataRequired, Length, Email, EqualTo
 
 
 class RegistrationForm(FlaskForm):
-    # Username field cannot be empty with DataRequired() and length limited with Length()
     username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Email', validoators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
-    confirm_password = PasswordField('Confirm Password', validators=[DataRequired()])
+    confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Sign up')
+
+
+class LoginForm(FlaskForm):
+    email = StringField('Email', validoators=[DataRequired(), Email()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Log in')
