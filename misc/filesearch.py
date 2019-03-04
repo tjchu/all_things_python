@@ -8,6 +8,8 @@ parser.add_argument('--dir', '-d', action='store', dest='dir', help='Directory t
 
 args = parser.parse_args()
 
+print("Welcome to Terry's File Search Python Program!")
+
 founded_files = []
 
 for root, dirs, files in os.walk(args.dir):
