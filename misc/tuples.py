@@ -1,3 +1,5 @@
+# Just Terry playing around with tuples...
+
 tuple1 = (0, 1, 2, 3)
 tuple2 = 0, 1, 2, 3 
 
