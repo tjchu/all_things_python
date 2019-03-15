@@ -28,6 +28,6 @@ for _, _, files in os.walk(args.dir):
 print("Phrase searching done.")
 
 
-#This can be done in Shell command grep in ONE LINE!
+# This can be done in Shell command grep in ONE LINE!
 # grep -rnw '/path/to/somewhere/' -e 'pattern'
 
