@@ -20,13 +20,4 @@ for root, directories, files in os.walk(args.dir):
 		
 
 print("Phrase searching done.")
-			
 
-
-
-"""
-with open(filename) as myFile:
-    for num, line in enumerate(myFile, 1):
-        if lookup in line:
-            print 'found at line:', num
-"""
