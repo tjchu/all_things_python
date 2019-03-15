@@ -1,6 +1,12 @@
 import argparse
 import os
 
+# Got asked this question by Amazon for an internship interview and had NO idea how to do it... :P 
+# Now that I look back, this question is extremely easy. Goes to show how much I have improved.
+# I told myself I will never mess up again if I ever got asked this question again.
+
+# Here is to more failures to conquer :) 
+
 #Parameters to pass into this script
 parser = argparse.ArgumentParser(description="Parenthesis/brackets checker")
 parser.add_argument('--string', '-s', action='store', dest='string', help="Phrase to parse and check", required=True)
