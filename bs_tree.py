@@ -1,4 +1,4 @@
-# A utility class that represents an individual node in a BST 
+# A utility class that represents an individual node in a Binary Search Tree
 class Node: 
     def __init__(self,key): 
         self.left = None
@@ -15,7 +15,7 @@ class Node:
 """
 
 
-# Binary Search Tree Find
+# Binary Search Tree Find with the give value to search for
 def search(root,key): 
 	
 	# Base Cases: root is null or key is present at root 
