@@ -1,3 +1,7 @@
+"""
+Different sort algorithms implemented in Python 3
+"""
+
 # Bubble Sort
 #O(n^2)
 def bubbleSort(arr):
