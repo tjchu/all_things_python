@@ -2,11 +2,11 @@
 class ListNode(object):
 
 	def __init__(self, data=None, next_node=None):
-		self.data = data
+		self.val = data
 		self.next = next_node
 
-	def get_data(self):
-		return self.data
+	def get_val(self):
+		return self.val
 
 	def get_next(self):
 		return self.next
@@ -20,7 +20,7 @@ def search(node: ListNode, data):
 	current = node
 	found = False
 	while current != None and found == False:
-		if current.get_data() == data:
+		if current.get_val() == data:
 			found = True
 		else:
 			current = current.get_next()
@@ -30,5 +30,4 @@ def search(node: ListNode, data):
 
 
 
-
-#def addTwoNumbers(self, l1: ListNode, l2: ListNode)
+def addTwoNumbers(self, l1: ListNode, l2: ListNode)
