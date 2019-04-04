@@ -47,6 +47,27 @@ def hasCycle(head: ListNode) -> boolean:
 	return False
 
 
+# Reverse LinkedList with a stack
+# O(n)
+def reverseLinkedListwStack(head: ListNode) -> ListNode:
+	stack = []
+	curr = head
+
+	# Check if it's a non-existent or single node because can't really reverse that
+	if curr == None or curr.next == None:
+		return curr
+	# Traverse through the LinkedList and push onto the stack
+	while curr:
+		stack.add(curr)
+	# Pop the stack and
+	new_head = stack,pop()
+	node = new_head
+	while len(stack):
+		node.set_next(stack.popo())
+		node = node.get_next()
+
+
+
 """
 You are given two non-empty linked lists representing two non-negative integers. 
 The digits are stored in reverse order and each of their nodes contain a single digit. 
