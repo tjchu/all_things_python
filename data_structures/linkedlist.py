@@ -29,7 +29,7 @@ def search(node: ListNode, data) -> ListNode:
 	return current
 
 # Detect if a LinkedList has a cycle
-def hasCycle(head: ListNode) -> boolean:
+def hasCycle(head: ListNode) -> bool:
 	# If there is no or only one LinkedList node, a cycle cannot happen so return False
 	if head == None or head.next == None:
 		return False
@@ -58,14 +58,37 @@ def reverseLinkedListwStack(head: ListNode) -> ListNode:
 		return curr
 	# Traverse through the LinkedList and push onto the stack
 	while curr:
-		stack.add(curr)
-	# Pop the stack and
-	new_head = stack,pop()
+		stack.append(curr)
+		curr = curr.get_next()
+	# Pop the stack and set it the next
+	new_head = stack.pop()
 	node = new_head
-	while len(stack):
-		node.set_next(stack.popo())
-		node = node.get_next()
 
+	while True:
+		if len(stack) == 0:
+			node.set_next(None)
+			break
+		node.set_next(stack.pop())
+		node = node.get_next()
+			
+
+# Tester for reversing LinkedList
+a = ListNode(1)
+b = ListNode(2)
+c = ListNode(3)
+d = ListNode(4)
+e = ListNode(5)
+a.set_next(b)
+b.set_next(c)
+c.set_next(d)
+d.set_next(e)
+
+reverseLinkedListwStack(a)
+
+node = e
+while node:
+	print(node.get_val())
+	node = node.get_next()
 
 
 """
@@ -81,8 +104,8 @@ def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
 	head = ListNode(0)
 	root = head
 	carry = False
-    
-    while l1 or l2 or carry:
+
+	while l1 or l2 or carry:
 		sum = 0
 		if l1:
 			sum += l1.val
