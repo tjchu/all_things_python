@@ -48,7 +48,7 @@ def hasCycle(head: ListNode) -> bool:
 
 
 # Reverse LinkedList with a stack
-# O(n)
+# O(2n)
 def reverseLinkedListwStack(head: ListNode) -> ListNode:
 	stack = []
 	curr = head
@@ -89,6 +89,22 @@ node = e
 while node:
 	print(node.get_val())
 	node = node.get_next()
+
+# Reverse a LinkedList in place without using any data structure like stack
+def reverseLinkedListInPlace(head: ListNode) -> ListNode:
+	prev = None
+	curr = head
+	nex = curr.get_next()
+	new_head = None
+
+	while curr:
+		curr.set_next(prev)
+		prev = curr
+		curr = nex
+		if nex:
+			nex = nex.get_next()
+	return prev
+
 
 
 """
